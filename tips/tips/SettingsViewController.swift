@@ -23,7 +23,6 @@ class SettingsViewController: UIViewController {
         let defaults = NSUserDefaults.standardUserDefaults()
         let defaultTipControlIndex = defaults.integerForKey("default_tip_amount_index")
         defaultTipControl.selectedSegmentIndex = defaultTipControlIndex
-        print(defaultTipControlIndex)
     }
 
     override func didReceiveMemoryWarning() {

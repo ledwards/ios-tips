@@ -93,7 +93,7 @@
                     <navigationItem key="navigationItem" title="Tip Calculator" id="HGT-xo-1ef">
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="AHk-QD-lFZ">
                             <connections>
-                                <segue destination="k1S-uz-rNs" kind="modal" id="y6C-sy-EBO"/>
+                                <segue destination="k1S-uz-rNs" kind="modal" modalTransitionStyle="flipHorizontal" id="y6C-sy-EBO"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
