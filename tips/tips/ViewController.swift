@@ -68,7 +68,7 @@ class ViewController: UIViewController {
 
         let formatter: NSNumberFormatter = NSNumberFormatter()
         formatter.numberStyle = NSNumberFormatterStyle.CurrencyStyle
-        formatter.locale = NSLocale(localeIdentifier: "en_US")
+        formatter.locale = NSLocale(localeIdentifier: NSLocale.preferredLanguages()[0])
         
         tipLabel.text = formatter.stringFromNumber(NSNumber(double: tip))
         totalLabel.text = formatter.stringFromNumber(NSNumber(double: total))
