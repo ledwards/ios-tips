@@ -25,6 +25,8 @@ class ViewController: UIViewController {
         let defaults = NSUserDefaults.standardUserDefaults()
         let lastUsedBillAmount = defaults.objectForKey("last_used_bill_amount") as! String
         billField.text = lastUsedBillAmount
+        
+        billField.becomeFirstResponder()
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -65,10 +67,6 @@ class ViewController: UIViewController {
         
         tipLabel.text = String(format: "$%.2f", tip)
         totalLabel.text = String(format: "$%.2f", total)
-    }
-    
-    @IBAction func onTap(sender: AnyObject) {
-        view.endEditing(true)
     }
 }
 
