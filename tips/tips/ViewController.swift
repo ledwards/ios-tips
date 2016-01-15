@@ -62,11 +62,16 @@ class ViewController: UIViewController {
         }
 
         let billAmount = Double(billField.text!)!
+        print(billAmount)
         let tip = billAmount * tipPercentage
         let total = billAmount + tip
+
+        let formatter: NSNumberFormatter = NSNumberFormatter()
+        formatter.numberStyle = NSNumberFormatterStyle.CurrencyStyle
+        formatter.locale = NSLocale(localeIdentifier: "en_US")
         
-        tipLabel.text = String(format: "$%.2f", tip)
-        totalLabel.text = String(format: "$%.2f", total)
+        tipLabel.text = formatter.stringFromNumber(NSNumber(double: tip))
+        totalLabel.text = formatter.stringFromNumber(NSNumber(double: total))
     }
 }
 
