@@ -21,6 +21,16 @@ class ViewController: UIViewController {
         
         tipLabel.text = "$0.00"
         totalLabel.text = "$0.00"
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let lastUsedBillAmount = defaults.objectForKey("last_used_bill_amount") as! String
+        billField.text = lastUsedBillAmount
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject(billField.text, forKey: "last_used_bill_amount")
+        defaults.synchronize()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -29,7 +39,6 @@ class ViewController: UIViewController {
         let defaults = NSUserDefaults.standardUserDefaults()
         let defaultTipControlIndex = defaults.integerForKey("default_tip_amount_index")
         tipControl.selectedSegmentIndex = defaultTipControlIndex
-        print(defaultTipControlIndex)
     }
 
     override func didReceiveMemoryWarning() {

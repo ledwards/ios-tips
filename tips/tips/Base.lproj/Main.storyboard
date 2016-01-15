@@ -108,7 +108,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="rTe-4e-nhN">
                     <connections>
-                        <action selector="onTap:" destination="BYZ-38-t0r" id="umj-ch-A4y"/>
+                        <action selector="onTap:" destination="BYZ-38-t0r" id="wCm-aW-RVO"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

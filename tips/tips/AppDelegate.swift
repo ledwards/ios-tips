@@ -16,6 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        let defaults = NSUserDefaults.standardUserDefaults()
+        var lastDate = NSDate().dateByAddingTimeInterval(-601)
+        if (defaults.objectForKey("last_exited_at") != nil) {
+            lastDate = defaults.objectForKey("last_exited_at") as! NSDate
+        }
+        if lastDate.compare(NSDate().dateByAddingTimeInterval(-600)) == NSComparisonResult.OrderedAscending {
+            defaults.setValue("0", forKey: "last_used_bill_amount")
+            defaults.synchronize()
+        }
         return true
     }
 
@@ -39,6 +48,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setObject(NSDate(), forKey: "last_exited_at")
+        defaults.synchronize()
     }
 
 
