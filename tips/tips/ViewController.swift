@@ -25,11 +25,14 @@ class ViewController: UIViewController {
         let defaults = NSUserDefaults.standardUserDefaults()
         let lastUsedBillAmount = defaults.objectForKey("last_used_bill_amount") as! String
         billField.text = lastUsedBillAmount
+        onEditingChanged(billField)
         
         billField.becomeFirstResponder()
     }
     
     override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
         let defaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject(billField.text, forKey: "last_used_bill_amount")
         defaults.synchronize()
@@ -56,13 +59,12 @@ class ViewController: UIViewController {
 
         if (billField.text == "") { billField.text = "0" }
         
-        if (billField.text![first] == "0" && billField.text! != "0") {
+        if (billField.text! != "0" && billField.text![first] == "0") {
             let withoutZero = billField.text!.startIndex.advancedBy(1)..<billField.text!.endIndex
             billField.text = billField.text![withoutZero]
         }
 
         let billAmount = Double(billField.text!)!
-        print(billAmount)
         let tip = billAmount * tipPercentage
         let total = billAmount + tip
 
